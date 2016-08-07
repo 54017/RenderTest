@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Render Test</title>
+	<script type="text/javascript">
+		window.start = new Date();
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id="first">
+			Test
+		</div>
+		<div id="second">
+			LOL
+		</div>
+		<div id="third">
+		</div>
+	</div>
+	<script async src="./js/index.js"></script>
+	<script type="text/javascript">
+		window.end = new Date();
+		var parseTime = end - start;
+		document.getElementById('third').innerHTML = "页面解析耗时" + parseTime; 
+	</script>
+</body>
+</html>
