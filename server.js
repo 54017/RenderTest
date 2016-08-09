@@ -14,7 +14,8 @@ http.createServer(function(req, res) {
 	if (req.url.indexOf('.js') >= 0) {
 		setTimeout(function() {
 			fs.readFile('.' + req.url, function(err, data) {
-				res.writeHead(200, {'content-type': 'text/javascript'});
+				res.writeHead(200, {'content-type': 'text/javascript',
+									'Cache-Control': 'no-cache' });
 				res.write(data);
 				res.end();
 			});
@@ -27,32 +28,80 @@ http.createServer(function(req, res) {
 				res.write(data);
 				res.end();
 			});
-		}, 2000);
-	} else if (req.url.indexOf('html') >= 0) {
-		var url = './templates' + req.url;
-		fs.readFile(url, function(err, data) {
-			if(err) { res.end('no file') }
-			res.writeHead(200, {'content-type': 'text/html'});
-			res.write(data);
-			res.end();
-		});
+		}, 5000);
+	} else if (req.url.indexOf('.html') >= 0) {
+		if (req.url.indexOf('chunked') >= 0) {
+			    res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+			    res.setHeader('Transfer-Encoding', 'chunked');
+
+			    var html =
+			        '<!DOCTYPE html>' +
+			        '<html lang="en">' +
+			            '<head>' +
+			                '<meta charset="utf-8">' +
+			                '<title>Chunked transfer encoding test</title>' +
+			            '</head>' +
+			            '<body>';
+
+			    res.write(html);
+
+			    html = '<h1>Chunked transfer encoding test</h1>'
+
+			    res.write(html);
+
+			    setTimeout(function(){
+			        html = '<h5>This is a chunked response after 5 seconds. The server should not close the stream before all chunks are sent to a client.</h5>'
+
+			        res.write(html);
+
+			        html =
+			            '</body>' +
+			                '</html';
+
+			        res.end(html);
+
+			    }, 10000);
+
+			    setTimeout(function(){
+			        html = '<h5>This is a chunked response after 2 seconds. Should be displayed before 5-second chunk arrives.</h5>'
+
+			        res.write(html);
+
+			    }, 5000);
+		} else {
+			var url = './templates' + req.url;
+			fs.readFile(url, function(err, data) {
+				if(err) { res.end('no file') }
+				res.writeHead(200, {'content-type': 'text/html',
+									'Cache-Control': 'no-cache' });
+				res.write(data);
+				res.end();
+			});
+		}
 	} else if (req.url.indexOf('test.jpg') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./images/test.jpg', function(err, data) {
 				res.writeHead(200, {'Content-Type': 'image/jpg',
-									'Cache-Control': 'max-age=60' });
+									'Cache-Control': 'no-cache' });
 				res.write(data);
 				res.end();
 			});
 		}, 1500);
+	} else if (req.url.indexOf('video') >= 0) {
+		setTimeout(function() {
+			fs.readFile('./video/movie.ogg', function(err, data) {
+				res.writeHead(200, {'Cache-Control': 'no-cache' });
+				res.write(data);
+				res.end();
+			});
+		}, 10000);
 	} else if (req.url === '/ajax') {
 		setTimeout(function() {
 			res.writeHead(200, { 'Content-Type': 'text/plain' });
 			res.write('q');
 			res.end();
-		}, 1500);
+		}, 10000);
 	} else if (req.url.indexOf('test.ico') >= 0) {
-		console.log('ooooooo');
 		setTimeout(function() {
 			fs.readFile('./test.ico', function(err, data) {
 				res.writeHead(200);
