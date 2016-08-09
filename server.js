@@ -69,7 +69,8 @@ http.createServer(function(req, res) {
 
 			    }, 5000);
 		} else {
-			var url = './templates' + req.url;
+			var reg = /\w+\.html/g;
+			var url = './templates/' + req.url.match(reg)[0];
 			fs.readFile(url, function(err, data) {
 				if(err) { res.end('no file') }
 				res.writeHead(200, {'content-type': 'text/html',
