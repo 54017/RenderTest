@@ -101,6 +101,13 @@ http.createServer(function(req, res) {
 			res.write('q');
 			res.end();
 		}, 10000);
+	} else if (req.url.indexOf('image') >= 0) {
+		fs.readFile('./images/test.jpg', function(err, data) {
+			res.writeHead(200, {'Content-Type': 'image/jpg',
+								'Cache-Control': 'max-age=300' });
+			res.write(data);
+			res.end();
+		});
 	} else if (req.url.indexOf('test.ico') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./test.ico', function(err, data) {
