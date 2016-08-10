@@ -69,7 +69,7 @@ http.createServer(function(req, res) {
 
 			    }, 5000);
 		} else {
-			var reg = /\w+\.html/g;
+			var reg = /.+\.html$/g;
 			var url = './templates/' + req.url.match(reg)[0];
 			fs.readFile(url, function(err, data) {
 				if(err) { res.end('no file') }
