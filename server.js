@@ -12,6 +12,9 @@ http.createServer(function(req, res) {
 	});
 	console.log(req.url);
 	if (req.url.indexOf('.js') >= 0) {
+		var times = [2000, 3000, 5000, 7000];
+		var time = times[Math.floor(Math.random() * 4)];
+		console.log(time);
 		setTimeout(function() {
 			fs.readFile('.' + req.url, function(err, data) {
 				res.writeHead(200, {'content-type': 'text/javascript',
@@ -19,11 +22,11 @@ http.createServer(function(req, res) {
 				res.write(data);
 				res.end();
 			});
-		}, 3000);
+		}, time);
 
 	} else if (req.url.indexOf('.css') >= 0) {
 		setTimeout(function() {
-			fs.readFile('.' + req.url, function(err, data) {
+			fs.readFile('./css/index.css', function(err, data) {
 				res.writeHead(200, {'content-type': 'text/css'});
 				res.write(data);
 				res.end();
@@ -69,8 +72,9 @@ http.createServer(function(req, res) {
 
 			    }, 5000);
 		} else {
-			var reg = /.+\.html$/g;
+			var reg = /.+\.html/g;
 			var url = './templates/' + req.url.match(reg)[0];
+			console.log("lala ", url);
 			fs.readFile(url, function(err, data) {
 				if(err) { res.end('no file') }
 				res.writeHead(200, {'content-type': 'text/html',

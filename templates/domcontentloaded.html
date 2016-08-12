@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>测试script阻塞</title>
+	<script type="text/javascript">
+		window.start = new Date();
+	</script>
+	<style>
+		#third {
+			padding: 10px 10px 10px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="first">
+		页面渲染了
+		</div>
+		<div id="third">
+			dadaasda
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+			a = document.getElementById('third');
+			alert(a.offsetWidth);
+			alert(getComputedStyle(a).paddingLeft);
+		});	
+	</script>
+</body>
+</html>
