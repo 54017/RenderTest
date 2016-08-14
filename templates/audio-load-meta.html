@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>测试audio</title>
+	<script type="text/javascript">
+		window.start = new Date();
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id="first">
+		页面渲染了
+		</div>
+		<div id="third">
+			dadaasda
+		</div>
+		<audio src="./test.mp3" preload="meta" controls>不支持audio</audio>
+	</div>
+	<script type="text/javascript">
+		window.end = new Date();
+		var parseTime = end - start;
+		document.getElementById('third').innerHTML = "页面解析耗时" + parseTime; 
+	</script>
+	<script>
+		window.addEventListener('load', function() {
+			var parseTime = new Date() - start;
+			alert(parseTime);
+		});
+	</script>
+</body>
+</html>

@@ -94,12 +94,20 @@ http.createServer(function(req, res) {
 		}, 1500);
 	} else if (req.url.indexOf('video') >= 0) {
 		setTimeout(function() {
-			fs.readFile('./video/movie.ogg', function(err, data) {
+			fs.readFile('./video/small.mp4', function(err, data) {
 				res.writeHead(200, {'Cache-Control': 'no-cache' });
 				res.write(data);
 				res.end();
 			});
-		}, 10000);
+		}, 5000);
+	} else if (req.url.indexOf('test.mp3') >= 0) {
+		setTimeout(function() {
+			fs.readFile('./audio/test.mp3', function(err, data) {
+				res.writeHead(200, {'Cache-Control': 'no-cache' });
+				res.write(data);
+				res.end();
+			});
+		}, 5000);
 	} else if (req.url === '/ajax') {
 		setTimeout(function() {
 			res.writeHead(200, { 'Content-Type': 'text/plain' });

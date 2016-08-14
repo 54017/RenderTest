@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>测试script阻塞</title>
+	<script type="text/javascript">
+		window.start = new Date();
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id="one">
+		</div>
+		<div id="two">
+		</div>
+		<div id="three">
+		</div>
+		<div id="four">
+		</div>
+		<div id="five">
+		</div>
+		<div id="six">
+		</div>
+		<div id="seven">
+		</div>
+		<div id="eight">
+		</div>
+		<div id="nine">
+		</div>
+	</div>
+	<script async type="text/javascript" src="../js/one.js"></script>
+	<script async type="text/javascript" src="../js/two.js"></script>
+	<script async type="text/javascript" src="../js/three.js"></script>
+	<script async type="text/javascript" src="../js/four.js"></script>
+	<script async type="text/javascript" src="../js/five.js"></script>
+	<script async type="text/javascript" src="../js/six.js"></script>
+	<script async type="text/javascript" src="../js/seven.js"></script>
+	<script async type="text/javascript" src="../js/eight.js"></script>
+	<script async type="text/javascript" src="../js/nine.js"></script>
+</body>
+</html>

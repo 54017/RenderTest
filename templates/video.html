@@ -18,8 +18,8 @@
 		</div>
 		<div id="third">
 		</div>
-		<video src="/video?v=3" width="320" height="240" controls>
-			<source src="/video?v=3" type="video/ogg">
+		<video width="320" height="240" controls>
+			<source src="/fff/video.mp4" type="video/mp4">
 			您的浏览器不支持 video 标签。
 		</video>
 	</div>
@@ -27,6 +27,12 @@
 		window.end = new Date();
 		var parseTime = end - start;
 		document.getElementById('third').innerHTML = "页面解析耗时" + parseTime; 
+	</script>
+	<script>
+		window.addEventListener('load', function() {
+			var parseTime = new Date() - start;
+			alert(parseTime);
+		});
 	</script>
 </body>
 </html>
