@@ -27,7 +27,8 @@ http.createServer(function(req, res) {
 	} else if (req.url.indexOf('.css') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./css/index.css', function(err, data) {
-				res.writeHead(200, {'content-type': 'text/css'});
+				res.writeHead(200, {'content-type': 'text/css',
+									'Cache-Control': 'no-cache'});
 				res.write(data);
 				res.end();
 			});
@@ -99,7 +100,7 @@ http.createServer(function(req, res) {
 				res.write(data);
 				res.end();
 			});
-		}, 5000);
+		}, 2000);
 	} else if (req.url.indexOf('test.mp3') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./audio/test.mp3', function(err, data) {
