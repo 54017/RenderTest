@@ -123,7 +123,7 @@ http.createServer(function(req, res) {
 				res.write(data);
 				res.end();
 			});
-		}, 1000);
+		}, 5000);
 	} else if (req.url.indexOf('test.ico') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./test.ico', function(err, data) {
