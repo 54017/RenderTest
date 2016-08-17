@@ -119,7 +119,7 @@ http.createServer(function(req, res) {
 		setTimeout(function() {
 			fs.readFile('./images/test.jpg', function(err, data) {
 				res.writeHead(200, {'Content-Type': 'image/jpg',
-									'Cache-Control': 'max-age=300' });
+									'Cache-Control': 'max-age=3000' });
 				res.write(data);
 				res.end();
 			});
