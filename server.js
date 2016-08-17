@@ -119,11 +119,11 @@ http.createServer(function(req, res) {
 		setTimeout(function() {
 			fs.readFile('./images/test.jpg', function(err, data) {
 				res.writeHead(200, {'Content-Type': 'image/jpg',
-									'Cache-Control': 'max-age=3000' });
+									'Cache-Control': 'max-age=300' });
 				res.write(data);
 				res.end();
 			});
-		}, 5000);
+		}, 2000);
 	} else if (req.url.indexOf('test.ico') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./test.ico', function(err, data) {
