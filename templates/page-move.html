@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>测试script阻塞</title>
+	<script type="text/javascript">
+		if (!document.registerElement) {
+			alert("noooooo");
+		}
+	</script>
+	<script type="text/javascript">
+		var proto = Object.create(HTMLElement.prototype);
+
+		proto.attachedCallback = function() {
+			var div = document.createElement('div');
+			div.style.paddingTop = parseFloat(this.getAttribute('data-ratio')) * 100 + "%";
+			div.style.backgroundColor = "#eee";
+			this.appendChild(div);
+		};
+		document.registerElement('x-foo', {prototype: proto});
+	</script>
+</head>
+<body>
+	<div id="container">
+	<x-foo data-ratio=0.2></x-foo>
+	dasdasdwqweqwe
+	</div>
+</body>
+</html>
