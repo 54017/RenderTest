@@ -72,6 +72,11 @@ http.createServer(function(req, res) {
 			        res.write(html);
 
 			    }, 5000);
+		} else if (req.url.indexOf(302) >= 0) {
+			res.writeHead(302, {
+				'Location': 'https://www.baidu.com/'
+			});
+			res.end();
 		} else {
 			var reg = /.+\.html/g;
 			var url = './templates/' + req.url.match(reg)[0];
@@ -95,7 +100,7 @@ http.createServer(function(req, res) {
 		}, 1500);
 	} else if (req.url.indexOf('video') >= 0) {
 		setTimeout(function() {
-			fs.readFile('./video/small.mp4', function(err, data) {
+			fs.readFile('./video/big.mp4', function(err, data) {
 				res.writeHead(200, {'Cache-Control': 'no-cache' });
 				res.write(data);
 				res.end();
