@@ -74,7 +74,7 @@ http.createServer(function(req, res) {
 			    }, 5000);
 		} else if (req.url.indexOf(302) >= 0) {
 			res.writeHead(302, {
-				'Location': 'https://www.baidu.com/'
+				'Location': '/image.html'
 			});
 			res.end();
 		} else {

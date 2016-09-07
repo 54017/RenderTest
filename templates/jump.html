@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Render Test</title>
+	<style type="text/css">
+	button {
+		width: 100px;
+		height: 100px;
+		background-color: aliceblue;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div>
+			<button id="first">window.open</button>
+			<button id="second">302</button>
+			<button id="third">location.href</button>
+			<button id="fourth">html meta</button>
+			<button id="fifth">iframe</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+	document.getElementById('first').addEventListener('click', function() {
+		window.open("https://www.baidu.com/");
+	});
+	document.getElementById('second').addEventListener('click', function() {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "/302.html");
+		xhr.send();
+	});
+	document.getElementById('third').addEventListener('click', function() {
+		location.href = "https://www.baidu.com/";
+	});
+	document.getElementById('fourth').addEventListener('click', function() {
+		var meta = document.createElement('meta');
+		meta.setAttribute('http-equiv',"refresh");
+		meta.setAttribute('content', "0; url=https://www.baidu.com/");
+		document.head.appendChild(meta);
+	});
+	document.getElementById('fifth').addEventListener('click', function() {
+		var iframe = document.createElement('iframe');
+		iframe.src ="https://www.baidu.com/";
+		document.body.appendChild(iframe);
+	});
+	
+	</script>
+</body>
+</html>
