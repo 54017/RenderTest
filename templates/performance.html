@@ -1025,10 +1025,12 @@
 		_p.style.backgroundColor = 'red';
 		div.appendChild(_p);
 	})
-	for (i in performance.timing) {
-		var _p = document.createElement('p');
-		_p.innerHTML = i + "  " + performance.timing[i];
-		div.appendChild(_p);
+	window.onload = function() {
+		for (i in performance.timing) {
+			var _p = document.createElement('p');
+			_p.innerHTML = i + "  " + performance.timing[i];
+			div.appendChild(_p);
+		}
 	}
 	document.getElementById('container').appendChild(div);
 	</script>
