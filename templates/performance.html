@@ -19,6 +19,9 @@
 		var _p = document.createElement('p');
 		_p.innerHTML = now - window.start;
 		_p.style.backgroundColor = 'yellow';
+		var _p = document.createElement('p');
+		_p.innerHTML = now.getTime();
+		_p.style.backgroundColor = 'red';
 		div.appendChild(_p);
 	})
 	for (i in performance.timing) {
