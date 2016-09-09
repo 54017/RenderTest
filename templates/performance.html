@@ -5,12 +5,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta content="telephone=no" name="format-detection" />
 	<title>测试script阻塞</title>
+	<script type="text/javascript">
+	window.start = new Date();
+	</script>
 </head>
 <body>
 	<div id="container">
 	</div>
 	<script type="text/javascript">
 	var div = document.createElement('div');
+	document.addEventListener('DOMContentLoaded', function() {
+		var now = new Date();
+		var _p = document.createElement('p');
+		_p.innerHTML = now - window.start;
+		_p.style.backgroundColor = 'yellow';
+		div.appendChild(_p);
+	})
 	for (i in performance.timing) {
 		var _p = document.createElement('p');
 		_p.innerHTML = i + "  " + performance.timing[i];
