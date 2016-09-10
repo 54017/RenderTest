@@ -6,6 +6,7 @@
 	<title>Render Test</title>
 	<script type="text/javascript">
 		window.start = new Date();
+		document.getElementById('first').innerHTML = start;
 	</script>
 </head>
 <body>
@@ -26,7 +27,8 @@
 	<script type="text/javascript">
 	var end = new Date();
 	var passTime = end - start;
-	alert(passTime);
+	document.getElementById('second').innerHTML = end;
+	document.getElementById('third').innerHTML = passTime;
 	</script>
 </body>
 </html>
