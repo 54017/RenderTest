@@ -101,7 +101,9 @@ http.createServer(function(req, res) {
 	} else if (req.url.indexOf('video') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./video/small.mp4', function(err, data) {
-				res.writeHead(200, {'Cache-Control': 'no-cache' });
+				res.writeHead(200, {
+					'Content-Type': 'video/mp4',
+					'Cache-Control': 'no-cache' });
 				res.write(data);
 				res.end();
 			});
