@@ -100,12 +100,12 @@ http.createServer(function(req, res) {
 		}, 1500);
 	} else if (req.url.indexOf('video') >= 0) {
 		setTimeout(function() {
-			fs.readFile('./video/big.mp4', function(err, data) {
+			fs.readFile('./video/small.mp4', function(err, data) {
 				res.writeHead(200, {'Cache-Control': 'no-cache' });
 				res.write(data);
 				res.end();
 			});
-		}, 2000);
+		}, 5000);
 	} else if (req.url.indexOf('test.mp3') >= 0) {
 		setTimeout(function() {
 			fs.readFile('./audio/test.mp3', function(err, data) {
