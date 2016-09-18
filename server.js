@@ -26,7 +26,7 @@ http.createServer(function(req, res) {
 
 	} else if (req.url.indexOf('.css') >= 0) {
 		setTimeout(function() {
-			fs.readFile('./css/index.css', function(err, data) {
+			fs.readFile('.' + req.url, function(err, data) {
 				res.writeHead(200, {'content-type': 'text/css',
 									'Cache-Control': 'no-cache'});
 				res.write(data);
