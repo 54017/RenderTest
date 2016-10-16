@@ -18,7 +18,7 @@ http.createServer(function(req, res) {
 		setTimeout(function() {
 			fs.readFile('.' + req.url, function(err, data) {
 				res.writeHead(200, {'content-type': 'text/javascript',
-									'Cache-Control': 'no-cache' });
+									 });
 				res.write(data);
 				res.end();
 			});
@@ -84,7 +84,7 @@ http.createServer(function(req, res) {
 			fs.readFile(url, function(err, data) {
 				if(err) { res.end('no file') }
 				res.writeHead(200, {'content-type': 'text/html',
-									'Cache-Control': 'no-cache' });
+									 });
 				res.write(data);
 				res.end();
 			});
