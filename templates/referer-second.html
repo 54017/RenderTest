@@ -7,11 +7,23 @@
 </head>
 <body>
 	<a href="/referer-third.html">跳转到第三个页面</a>
+	<button id="href">href 跳转</button>
+	<button id="replace">replace 跳转</button>
+	<button id="back">返回</button>
 	<p id="performance"></p>
 	<p id="referer"></p>
 	<script type="text/javascript">
-		document.getElementById('performance').innerText = performance.navigation.type;
-		document.getElementById('referer').innerText = document.referrer;
+		document.getElementById('performance').innerText = "type  " + performance.navigation.type;
+		document.getElementById('referer').innerText = "referer  " + document.referrer;
+		document.getElementById('href').addEventListener('click', function() {
+			location.href="/referer-third.html";
+		})
+		document.getElementById('replace').addEventListener('click', function() {
+			location.replace('/referer-third.html');
+		})
+		document.getElementById('back').addEventListener('click', function() {
+			history.back();
+		})
 	</script>
 </body>
 </html>
