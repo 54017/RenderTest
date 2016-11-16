@@ -10,6 +10,7 @@
 	<button id="href">href 跳转</button>
 	<button id="replace">replace 跳转</button>
 	<button id="back">返回</button>
+	<button id="imgback">img返回</button>
 	<p id="performance"></p>
 	<p id="referer"></p>
 	<script type="text/javascript">
@@ -24,6 +25,10 @@
 		document.getElementById('back').addEventListener('click', function() {
 			history.back();
 			alert("history back 后执行了代码");
+		})
+		document.getElementById('imgback').addEventListener('click', function() {
+			history.back();
+			(new Image()).src="http://pic55.nipic.com/file/20141208/19462408_171130083000_2.jpg"
 		})
 	</script>
 </body>
